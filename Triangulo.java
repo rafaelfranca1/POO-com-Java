@@ -1,3 +1,5 @@
 public class Triangulo extends Shape {
-    private int angle;
+    public double area() {
+        return (this.width * this.height) / 2;
+    }
 }
