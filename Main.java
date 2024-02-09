@@ -4,18 +4,20 @@ class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("Informe seu peso em quilos: ");
-        double massa = Double.parseDouble(scan.nextLine());
+        System.out.print("Informe o coeficiente a: ");
+        double a = Double.parseDouble(scan.nextLine());
 
-        System.out.print("Informe sua altura em metros: ");
-        double altura = Double.parseDouble(scan.nextLine());
+        System.out.print("Informe o coeficiente b: ");
+        double b = Double.parseDouble(scan.nextLine());
+
+        System.out.print("Informe o coeficiente c: ");
+        double c = Double.parseDouble(scan.nextLine());
 
         scan.close();
 
-        CalculoIMC calculo = new CalculoIMC(massa, altura);
+        EquacaoSGrau equacao = new EquacaoSGrau(a, b, c);
 
-        double imc = calculo.calcularIMC();
-
-        calculo.classificarIMC(imc);
+        double delta = equacao.calcularDelta();
+        equacao.calcularRaizes(delta);
     }
 }
