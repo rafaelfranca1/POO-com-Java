@@ -1,9 +1,21 @@
-class Main {
+import java.util.Scanner;
+import obj.Personagem;
+
+public class Main {
     public static void main(String[] args) {
-        DescontoIR desconto = new DescontoIR(4800);
+        Personagem[] personagens = new Personagem[] {
+			new Personagem(1, 1, "Frodo"),
+			new Personagem(2, 1,"Bilbo")
+		};
 
-        double salarioLiquido = desconto.salarioLiquido(desconto.salarioBruto);
+		Scanner scanner = new Scanner(System.in);
 
-        System.out.println(salarioLiquido);
+		int n = personagens.length - 1;
+		while (true) {
+			System.out.println("Escolha um personagem de 0 a " + n + ":");
+			int i = Integer.parseInt(scanner.nextLine());
+			System.out.print(personagens[i].getName() + " falou: ");
+			personagens[i].speak();
+		}
     }
 }
