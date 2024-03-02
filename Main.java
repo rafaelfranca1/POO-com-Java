@@ -12,7 +12,7 @@ public class Main {
 
 		int n = personagens.length - 1;
 		while (true) {
-			System.out.println("Escolha um personagem de 0 a " + n + ":");
+			System.out.print("Escolha um personagem de 0 a " + n + ": ");
 			int i = Integer.parseInt(scanner.nextLine());
 			System.out.print(personagens[i].getName() + " falou: ");
 			personagens[i].speak();
