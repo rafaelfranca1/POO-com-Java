@@ -9,15 +9,19 @@ public class Personagem extends Objeto implements Speaker {
         this.name = name;
     }
 
-    public String toString() {
-        return name + ": " + exibePosicao();
+    public void speak() {
+        System.out.println("Oi");
     }
 
-    public void speak() {
-        System.out.println("hello");
+    public String toString() {
+        return name + ": " + exibePosicao();
     }
 
     public String getName () {
         return this.name;
     }
+
+    public int getSize() {
+		return 1;
+	}
 }

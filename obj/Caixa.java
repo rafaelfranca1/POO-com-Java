@@ -13,4 +13,8 @@ public class Caixa extends Objeto {
     public String toString() {
         return "Posicao: " + exibePosicao() + ". Tamanho: " + width + "x" + height;
     }
+
+    public int getSize() {
+		return width * height;
+	}
 }
