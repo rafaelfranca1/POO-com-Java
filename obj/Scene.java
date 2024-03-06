@@ -1,6 +1,6 @@
 package obj;
 
-public class Scene extends Objeto {
+public class Scene {
     private Objeto[] cenario;
 
     public Scene() {
