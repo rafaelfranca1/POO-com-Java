@@ -40,7 +40,7 @@ public class Inventory<T> {
                     break;
                 case 5:
                     System.out.println("Veja a lista em ordem alfabetica:");
-                    this.listItems(Comparator.naturalOrder());
+                    this.listItemsSorted();
                     break;
                 case 0:
                     System.out.println("Fim do programa.");
@@ -70,7 +70,7 @@ public class Inventory<T> {
         itens.remove(item);
     }
 
-    public void listItems() {//imprime todos os itens do inventário, em ordem alfabética 
+    public void listItems() {//imprime todos os itens do inventário
         
         for (T item : itens) {
             System.out.println(item);
@@ -78,13 +78,20 @@ public class Inventory<T> {
         System.out.println();
     }
 
-    public void listItems(Comparator<T> comparator) {
+    public void listItemsSorted() {//imprime todos os itens do inventário, em ordem alfabética 
         List<T> copy = new ArrayList<>(itens);
-        Collections.sort(copy, comparator);
+        Collections.sort(copy, new Comp());
         
         for (T item : copy) {
             System.out.println(item);
         }
         System.out.println();
+    }
+
+    private class Comp implements Comparator<T> {
+        @Override
+        public int compare(T item1, T item2) {
+            return item1.toString().compareTo(item2.toString());
+        }
     }
 }
