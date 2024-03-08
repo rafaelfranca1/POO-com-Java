@@ -15,8 +15,8 @@ public class Inventory<T> {
 
         do {
             System.out.println("Qual acao voce deseja realizar?");
-            System.out.println("1. Adicionar item a lista");
-            System.out.println("2. Remover item da lista");
+            System.out.println("1. Adicionar item ao inventario");
+            System.out.println("2. Remover item do inventario");
             System.out.println("3. Verificar se ha um item");
             System.out.println("4. Ver todos os itens");
             System.out.println("5. Ver itens em ordem alfabetica");
@@ -45,17 +45,17 @@ public class Inventory<T> {
                     input = scanner.nextLine();
 
                     if (this.hasItem((T) input)) {
-                        System.out.println("\'" + input + "\'' esta na lista.\n");
+                        System.out.println("\'" + input + "\' esta no inventario.\n");
                     } else {
                         System.out.println("O item \'" + input + "\' nao esta presente no inventario.\n");
                     }
                     break;
                 case 4:
-                    System.out.println("Veja a lista:");
+                    System.out.println("Veja o inventario:");
                     this.listItems();
                     break;
                 case 5:
-                    System.out.println("Veja a lista em ordem alfabetica:");
+                    System.out.println("Veja o inventario em ordem alfabetica:");
                     this.listItemsSorted();
                     break;
                 case 0:
@@ -69,7 +69,13 @@ public class Inventory<T> {
     }
 
     public boolean hasItem(T item) {//verifica se o inventário contém um dado item (usando equals)
-        return itens.contains(item);
+        for(T i : itens) {
+            if(i.equals(item)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void addItem(T item) {//adiciona um item ao inventário
