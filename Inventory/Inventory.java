@@ -1,38 +1,54 @@
 import java.util.*;
 
 public class Inventory<T> {
-    ArrayList<T> itens;
-    Scanner scanner;
+    private ArrayList<T> itens;
+    private Scanner scanner;
 
     public Inventory() {
-        itens = new ArrayList<T>();
+        itens = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
 
     public void menu() {
-        int opcao;
+        int opcao = -1;
         String input;
 
         do {
-            System.out.println("O que você deseja?\n1. Adicionar item a lista\n2. Remover item da lista\n3. Verificar se ha um item\n4. Ver todos os itens\n5. Ver itens em ordem alfabetica\n");
+            System.out.println("Qual acao voce deseja realizar?");
+            System.out.println("1. Adicionar item a lista");
+            System.out.println("2. Remover item da lista");
+            System.out.println("3. Verificar se ha um item");
+            System.out.println("4. Ver todos os itens");
+            System.out.println("5. Ver itens em ordem alfabetica");
+            System.out.println("0. Sair\n");
 
-            opcao = Integer.parseInt(scanner.nextLine());
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opcao invalida. Digite um numero entre 0 e 5.\n");
+                continue;
+            }
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Adicione um item na lista: ");
+                    System.out.print("Digite o item que voce deseja adicionar: ");
                     input = scanner.nextLine();
                     this.addItem((T) input);
                     break;
                 case 2:
-                    System.out.print("Remova um item na lista: ");
+                    System.out.print("Digite o item que voce deseja remover: ");
                     input = scanner.nextLine();
                     this.removeItem((T) input);
                     break;
                 case 3:
-                    System.out.print("Pesquise um item na lista: ");
+                    System.out.print("Digite o item que voce deseja verificar: ");
                     input = scanner.nextLine();
-                    this.hasItem((T) input);
+
+                    if (this.hasItem((T) input)) {
+                        System.out.println("\'" + input + "\'' esta na lista.\n");
+                    } else {
+                        System.out.println("O item \'" + input + "\' nao esta presente no inventario.\n");
+                    }
                     break;
                 case 4:
                     System.out.println("Veja a lista:");
@@ -43,35 +59,34 @@ public class Inventory<T> {
                     this.listItemsSorted();
                     break;
                 case 0:
-                    System.out.println("Fim do programa.");
+                    System.out.println("Fim do programa.\n");
                     break;
                 default:
-                    System.out.println("Opcao invalida! Tente novamente.");
+                    System.out.println("Opcao invalida. Digite um numero entre 0 e 5.\n");
                     break;
             }
         } while (opcao != 0);
     }
 
     public boolean hasItem(T item) {//verifica se o inventário contém um dado item (usando equals)
-        for(int i = 0; i < itens.size(); i++) {
-            if(itens.get(i).equals(item)) {
-                return true;
-            }
-        }
-        
-        return false;
+        return itens.contains(item);
     }
 
     public void addItem(T item) {//adiciona um item ao inventário
         itens.add(item);
+        System.out.println("\'" + item + "\' adicionado ao inventario com sucesso!\n");
     }
 
     public void removeItem(T item) {//remove um item do inventário
-        itens.remove(item);
+        if(this.hasItem(item)) {
+            itens.remove(item);
+            System.out.println("\'" + item + "\' removido do inventario com sucesso!\n");
+        } else {
+            System.out.println("O item \'" + item + "\' nao esta presente no inventario.\n");
+        }
     }
 
-    public void listItems() {//imprime todos os itens do inventário
-        
+    public void listItems() {//imprime todos os itens do inventário 
         for (T item : itens) {
             System.out.println(item);
         }
