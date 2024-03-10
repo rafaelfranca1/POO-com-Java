@@ -1,6 +1,6 @@
 public class Retangulo extends Figura {
-    double a;
-    double b;
+    private double a;
+    private double b;
 
     public Retangulo(double a, double b, String cor) {
         super(cor);
@@ -29,6 +29,6 @@ public class Retangulo extends Figura {
     }
 
     public String toString() {
-        return "Retangulo [a=" + a + ", b=" + b + ", cor=" + cor + "]";
+        return "Retangulo [a=" + a + ", b=" + b + ", cor=" + getCor() + "]";
     }
 }

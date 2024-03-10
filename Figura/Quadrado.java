@@ -5,11 +5,11 @@ public class Quadrado extends Retangulo {
     }
 
     public double area() {
-        return this.a * this.a;
+        return getA() * getA();
     }
 
     public String toString() {
-        return "Quadrado [a=" + a + ", cor=" + cor + "]";
+        return "Quadrado [a=" + getA() + ", cor=" + getCor() + "]";
     }
     
 }

@@ -1,6 +1,6 @@
 public class Triangulo extends Figura {
-    double base;
-    double altura;
+    private double base;
+    private double altura;
     
     public Triangulo(double base, double altura, String cor) {
         super(cor);
@@ -26,7 +26,7 @@ public class Triangulo extends Figura {
     }
 
     public String toString() {
-        return "Triangulo [base=" + base + ", altura=" + altura + ", cor=" + cor + "]";
+        return "Triangulo [base=" + base + ", altura=" + altura + ", cor=" + getCor() + "]";
     }
     
 }

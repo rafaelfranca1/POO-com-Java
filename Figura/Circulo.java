@@ -1,5 +1,5 @@
 public class Circulo extends Figura {
-    double raio;
+    private double raio;
 
     public Circulo(double raio, String cor) {
         super(cor);
@@ -19,6 +19,6 @@ public class Circulo extends Figura {
     }
 
     public String toString() {
-        return "Circulo [raio=" + raio + ", cor=" + cor + "]";
+        return "Circulo [raio=" + raio + ", cor=" + getCor() + "]";
     }
 }
